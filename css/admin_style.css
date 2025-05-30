@@ -1,0 +1,169 @@
+/* La începutul fișierului CSS admin */
+:root {
+    --admin-primary-color: #007bff;
+    --admin-success-color: #28a745;
+    --admin-warning-color: #ffc107;
+    --admin-danger-color: #dc3545;
+    --admin-light-gray: #f8f9fa;
+    --admin-medium-gray: #e9ecef;
+    --admin-dark-gray: #dee2e6;
+    --admin-text-color: #495057;
+    --admin-heading-color: #343a40;
+    --admin-card-bg: #ffffff;
+    --admin-body-bg: #f4f6f9; 
+    --admin-border-radius: 6px; /* Sau 0.3rem */
+    --admin-box-shadow-light: 0 2px 5px rgba(0,0,0,0.05);
+    --admin-box-shadow-medium: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+body.admin-body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: var(--admin-text-color);
+    background-color: var(--admin-body-bg);
+    line-height: 1.6;
+}
+
+/* Header Admin */
+.admin-header {
+    background-color: var(--admin-card-bg);
+    color: var(--admin-heading-color);
+    padding: 15px 30px;
+    box-shadow: var(--admin-box-shadow-light);
+    border-bottom: 1px solid var(--admin-medium-gray);
+}
+.admin-header h1 a {
+    color: var(--admin-primary-color);
+    font-weight: 700;
+}
+.admin-nav li a {
+    color: var(--admin-text-color);
+    font-weight: 500;
+    padding: 10px 15px; /* Am mărit padding-ul vertical pentru click mai ușor */
+    transition: color 0.2s ease, background-color 0.2s ease, border-bottom-color 0.2s ease;
+    border-bottom: 3px solid transparent; /* Pregătim pentru accentul activ */
+}
+.admin-nav li a:hover {
+    color: var(--admin-primary-color);
+    background-color: var(--admin-light-gray);
+}
+.admin-nav li a.active {
+    color: var(--admin-primary-color);
+    font-weight: 700;
+    background-color: transparent; /* Scoatem fundalul pentru activ, ne bazăm pe bordură */
+    border-bottom-color: var(--admin-primary-color);
+}
+
+/* Dashboard */
+.admin-dashboard-content h2 {
+    font-weight: 700;
+    color: var(--admin-heading-color);
+    font-size: 1.9em; /* Puțin mai mare */
+    margin-bottom: 15px; /* Spațiu mai mic dacă padding-ul de jos e pe border */
+    border-bottom: 3px solid var(--admin-primary-color);
+    padding-bottom: 12px; /* Ajustat */
+}
+
+.dashboard-section {
+    background-color: var(--admin-card-bg);
+    padding: 30px; /* Mai mult padding în secțiuni */
+    border-radius: var(--admin-border-radius);
+    box-shadow: var(--admin-box-shadow-medium);
+    margin-bottom: 35px; /* Mai mult spațiu între secțiuni */
+}
+.dashboard-section h3 {
+    font-weight: 600; /* Titlurile de secțiune mai proeminente */
+    color: var(--admin-heading-color);
+    font-size: 1.5em;
+    margin-bottom: 25px; /* Mai mult spațiu sub subtitlu */
+    border-bottom-color: var(--admin-medium-gray);
+}
+
+/* Carduri Statistici */
+.dashboard-stats {
+    gap: 30px; /* Spațiu mai mare între carduri */
+    margin-bottom: 35px;
+}
+.stat-card {
+    border-left-width: 5px; /* Accent mai gros */
+    border-radius: var(--admin-border-radius);
+    padding: 25px;
+    box-shadow: var(--admin-box-shadow-light); /* Umbră mai fină default */
+}
+.stat-card:hover {
+    transform: translateY(-5px) scale(1.02); /* Efect de mărire subtil la hover */
+    box-shadow: var(--admin-box-shadow-medium);
+}
+.stat-card h3 {
+    font-size: 1em;
+    text-transform: uppercase; /* Titluri carduri cu majuscule */
+    letter-spacing: 0.5px;
+    color: #6c757d; /* Culoare mai discretă */
+}
+.stat-card .stat-value {
+    font-size: 2.5em; /* Valori mai mari */
+    color: var(--admin-heading-color);
+}
+
+/* Link-uri Rapide */
+.quick-links-container .button {
+    border-radius: var(--admin-border-radius);
+    font-weight: 500;
+    padding: 12px 25px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.quick-links-container .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* Tabel Admin */
+.admin-table {
+    border: none; /* Scoatem bordura exterioară a tabelului */
+    border-radius: 0; /* Tabelul în sine nu mai are nevoie de rotunjire dacă e într-o secțiune */
+    box-shadow: none;
+}
+.admin-table th, .admin-table td {
+    border-color: var(--admin-medium-gray); /* Culoare consistentă pentru borduri */
+}
+.admin-table thead th {
+    background-color: var(--admin-light-gray);
+    color: var(--admin-heading-color);
+    font-size: 0.9em;
+}
+.admin-table tbody tr:hover {
+    background-color: #eef1f5; /* O nuanță foarte deschisă de albastru/gri */
+}
+.button.button-small.edit { /* Mai specific pentru butonul de editare mic */
+    background-color: var(--admin-warning-color);
+    color: var(--admin-heading-color);
+}
+.button.button-small.edit:hover {
+    background-color: #e0a800;
+}
+
+/* Flash Messages - Mai vizibile */
+.flash-message {
+    border-radius: var(--admin-border-radius);
+    padding: 15px 20px;
+    font-weight: 500;
+}
+.flash-message.error {
+    background-color: #fddede; /* Roșu mai deschis */
+    color: #721c24;
+    border-left: 5px solid var(--admin-danger-color);
+}
+.button i, .stat-card h3 i {
+    margin-right: 8px; /* Spațiu între iconiță și text */
+    font-size: 0.9em; /* Iconițe puțin mai mici decât textul înconjurător */
+    vertical-align: middle; /* Ajută la aliniere */
+    opacity: 0.8; /* Puțin mai discrete */
+}
+.stat-card, .dashboard-section {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06); 
+    /* Două umbre pentru un efect mai natural */
+}
+.stat-card:hover, .dashboard-section:hover { /* Un hover mai pronunțat, dar tot subtil */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08), 0 3px 8px rgba(0,0,0,0.07);
+}
