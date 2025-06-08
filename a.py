@@ -9,7 +9,7 @@ import sys
 
 # --- Configurare ---
 DB_HOST = '192.168.234.128'
-DB_USER = 'stanco'  # Folosește utilizatorul și parola corecte
+DB_USER = 'root'  # Folosește utilizatorul și parola corecte
 DB_PASSWORD = 'stanco'
 DB_NAME = 'StoreDB'
 
@@ -21,8 +21,9 @@ ORIGINAL_UPLOAD_DIR = os.path.join(BASE_DIR, 'uploads', 'products')
 THUMBNAIL_UPLOAD_DIR = os.path.join(BASE_DIR, 'uploads', 'products_thumbnails')
 THUMBNAIL_WIDTH = 150
 
-NUMBER_OF_PRODUCTS = 100  # Setează la 100 sau 300+
-MAX_SECONDARY_PHOTOS_PER_PRODUCT = 4
+NUMBER_OF_PRODUCTS = 550  # Numărul total de produse de adăugat
+
+MAX_SECONDARY_PHOTOS_PER_PRODUCT = 4 # Numărul maxim de imagini secundare per produs
 
 # Inițializează Faker
 fake = Faker('ro_RO') # Date în format românesc
@@ -200,7 +201,6 @@ def main():
                             cursor.execute(sql_insert_prod_char_val, (product_id, char_id, char_value))
                         except mysql.connector.Error as err_char_val:
                             if err_char_val.errno == 1062: # Duplicate entry
-                                # print(f"Nota: Caracteristica '{char_name}' deja asignata pentru produsul ID {product_id}. Se ignora.")
                                 pass # Ignoră eroarea de duplicat, se poate întâmpla rar dacă logica de selecție nu e perfect unică
                             else:
                                 raise # Aruncă alte erori

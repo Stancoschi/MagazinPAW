@@ -2,15 +2,14 @@
 // public/index.php
 require_once __DIR__ . '/../includes/header.php'; // Header-ul public
 
-// --- Preluare Date Specifice pentru Pagina Acasă (Opțional) ---
-// De exemplu, preluăm câteva produse noi (sau populare, sau dintr-o categorie specifică)
+
 $featured_products_title = "Noutăți în Magazin";
 $featured_products = [];
 $home_page_error = null;
 
 try {
-    if (isset($pdo)) { // Verifică dacă $pdo este disponibil (ar trebui să fie din header.php)
-        // Preluăm, de exemplu, ultimele 4 produse adăugate
+    if (isset($pdo)) { // Verificăm dacă $pdo este disponibil (ar trebui să fie din header.php)
+       
         $stmt_featured = $pdo->query("SELECT id, name, price, short_description, main_photo_filename 
                                       FROM products 
                                       ORDER BY created_at DESC 
@@ -25,7 +24,7 @@ try {
     error_log("Eroare DB pe public/index.php (featured products): " . $e->getMessage());
     $home_page_error = "Nu s-au putut încărca produsele recomandate.";
 }
-// Poți prelua și alte date aici, de ex: număr total de produse pentru un mic "despre noi", categorii etc.
+
 ?>
 
 <div class="page-home">
@@ -48,12 +47,10 @@ try {
     <section class="about-us-snippet container" style="margin-bottom: 40px; text-align: center; padding: 20px 0;">
         <h2 style="font-size: 2.2em; color: #333; margin-bottom: 20px; border-bottom: 2px solid #007bff; padding-bottom: 10px; display: inline-block;">Cine Suntem?</h2>
         <p style="font-size: 1.1em; line-height: 1.7; color: #555; max-width: 800px; margin: 0 auto 20px auto;">
-            La [Numele Magazinului Tău], ne dedicăm să aducem clienților noștri cele mai inovatoare și calitative produse.
+            La StoreDB, ne dedicăm să aducem clienților noștri cele mai inovatoare și calitative produse.
             Cu o pasiune pentru [domeniul tău de activitate] și un angajament ferm față de satisfacția clientului, 
             suntem aici pentru a vă oferi o experiență de cumpărături plăcută și eficientă.
         </p>
-        <!-- Poți adăuga un link către o pagină "Despre Noi" mai detaliată -->
-        <!-- <a href="#" class="button button-secondary">Află Mai Multe</a> -->
     </section>
 
     <!-- 3. Secțiunea "Produse Recomandate/Noi" -->
@@ -103,8 +100,7 @@ try {
     </section>
     <?php endif; ?>
 
-    <!-- 4. Alte Secțiuni (Opțional) -->
-    <!-- De exemplu, un call to action pentru abonare la newsletter, link-uri către social media etc. -->
+    <!-- un call to action pentru abonare la newsletter, link-uri către social media etc. -->
     <section class="cta-section container" style="background-color: #e9ecef; padding: 40px; text-align: center; border-radius: 5px; margin-bottom: 40px;">
         <h3 style="font-size: 1.8em; color: #333; margin-bottom: 15px;">Fii la Curent cu Ultimele Noutăți!</h3>
         <p style="margin-bottom: 25px; color: #555;">Abonează-te la newsletter-ul nostru pentru oferte exclusive și informații despre noile produse.</p>

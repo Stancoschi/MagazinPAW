@@ -3,10 +3,10 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-require_once __DIR__ . '/db.php';       // Presupunând că nu e nevoie de DB direct în header-ul public
+require_once __DIR__ . '/db.php';       
 require_once __DIR__ . '/functions.php'; // Pentru escape() și BASE_URL
 
-// ... (codul pentru BASE_URL) ...
+
 ?>
 <!DOCTYPE html>
 <html lang="ro">
@@ -28,7 +28,7 @@ require_once __DIR__ . '/functions.php'; // Pentru escape() și BASE_URL
                 <?php if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] === true): ?>
                     <li><span style="padding: 0 15px; color: #555;">Salut, <?php echo escape($_SESSION['username']); ?>!</span></li>
                     <li><a href="<?php echo BASE_URL; ?>/public/logout.php">Logout</a></li>
-                    <!-- Poți adăuga aici link către "Contul Meu" etc. -->
+                    
                 <?php else: ?>
                     <li><a href="<?php echo BASE_URL; ?>/public/login.php">Login</a></li>
                     <li><a href="<?php echo BASE_URL; ?>/public/register.php">Înregistrare</a></li>
@@ -37,7 +37,7 @@ require_once __DIR__ . '/functions.php'; // Pentru escape() și BASE_URL
             </ul>
         </nav>
     </header>
-    <main class="container"> <?php // Adaugă clasa container aici sau în fiecare pagină ?>
+    <main class="container"> <?php  ?>
         <?php
         // Afișare mesaje flash
         if (isset($_SESSION['flash_message'])) {
@@ -49,4 +49,4 @@ require_once __DIR__ . '/functions.php'; // Pentru escape() și BASE_URL
             unset($_SESSION['flash_type']);
         }
         ?>
-        <!-- Conținutul specific paginii va veni aici -->
+        

@@ -2,7 +2,7 @@
 // Rulează din linia de comandă: php populate_db.php
 // Asigură-te că ai rulat 'composer require fakerphp/faker' în directorul proiectului.
 
-require_once __DIR__ . '/vendor/autoload.php'; // Dacă folosești Composer
+//require_once __DIR__ . '/vendor/autoload.php'; // Dacă folosești Composer
 require_once __DIR__ . '/includes/db.php';     // Conexiunea la BD
 require_once __DIR__ . '/includes/functions.php'; // Pentru resizeImage
 use Faker\Factory;
@@ -10,7 +10,7 @@ use Faker\Factory;
 $placeholderImageDir = __DIR__ . '/sample_images/'; // Creează acest director și pune câteva imagini .jpg, .png
 $originalUploadDir = __DIR__ . '/uploads/products/';
 $thumbnailUploadDir = __DIR__ . '/uploads/products_thumbnails/';
-$thumbnailWidth = 150;
+$thumbnailWidth = 550;
 
 // Creează directoarele de upload dacă nu există
 if (!is_dir($originalUploadDir)) mkdir($originalUploadDir, 0775, true);
@@ -28,7 +28,7 @@ if (empty($sampleImages)) {
 
 $faker = \Faker\Factory::create('ro_RO'); // Generează date în format românesc
 
-$numberOfProducts = 150; // Setează la 100 sau 300+
+$numberOfProducts = 500; // Setează la 100 sau 300+
 $maxSecondaryPhotosPerProduct = 4;
 
 echo "Se populează baza de date...\\n";

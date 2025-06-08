@@ -1,10 +1,8 @@
 <?php
-// includes/header_admin.php
-// session_start() și verificarea de login sunt deja făcute în pagina admin care include acest header
+
 if (session_status() === PHP_SESSION_NONE) { session_start(); } // doar ca fallback
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/functions.php';
-// ... (codul pentru BASE_URL) ...
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +13,7 @@ require_once __DIR__ . '/functions.php';
     <title>Administrare Magazin Virtual</title>
     
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/style.css"> 
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/admin_style.css"> <!-- ESTE ACEASTĂ LINIE AICI? -->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/admin_style.css">
 </head>
 <body class="admin-body">
 <header class="admin-header">
@@ -56,9 +54,9 @@ require_once __DIR__ . '/functions.php';
 </header>
 <main class="admin-container">
     <?php
-    // Afișare mesaje flash (dacă există)
+    // Afișare mesaje flash 
     if (isset($_SESSION['flash_message'])) {
-        // ... (codul tău pentru afișare flash message) ...
+        
     }
     ?>
-    <!-- Conținutul specific paginii admin va veni aici -->
+   

@@ -2,7 +2,7 @@
 $db_host = 'localhost';
 $db_name = 'StoreDB';
 $db_user = 'stanco';
-$db_pass = 'stanco'; // Folosește parola setată!
+$db_pass = 'stanco'; 
 
 $dsn = "mysql:host=$db_host;dbname=$db_name;charset=utf8mb4";
 
@@ -15,9 +15,6 @@ $options = [
 try {
     $pdo = new PDO($dsn, $db_user, $db_pass, $options);
 } catch (PDOException $e) {
-    // Pentru producție, loghează eroarea și afișează un mesaj generic
-    // error_log($e->getMessage());
-    // die("Eroare la conectarea la baza de date. Vă rugăm încercați mai târziu.");
-    throw new PDOException($e->getMessage(), (int)$e->getCode()); // Pentru dezvoltare
+    throw new PDOException($e->getMessage(), (int)$e->getCode()); // Aruncă excepții
 }
 ?>

@@ -74,7 +74,7 @@ try {
 
             <?php if(!empty($product['detailed_description'])): ?>
             <h3>Descriere Detaliată</h3>
-            <div><?php echo nl2br(escape($product['detailed_description'])); // Sau un parser Markdown/HTML Purifier dacă permiți HTML ?></div>
+            <div><?php echo nl2br(escape($product['detailed_description'])); ?></div>
             <?php endif; ?>
 
             <?php if (!empty($characteristics_values)): ?>
@@ -87,7 +87,7 @@ try {
                 </dl>
             <?php endif; ?>
 
-            <!-- Aici poți adăuga un buton "Adaugă în coș" dacă extinzi funcționalitatea -->
+            
         </div>
     </div>
     <p style="margin-top:20px;"><a href="products_list.php" class="button">&laquo; Înapoi la listă</a></p>

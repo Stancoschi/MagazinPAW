@@ -93,17 +93,8 @@ try {
     $final_bind_params[':offset'] = $offset;
     $final_bind_params[':limit_per_page'] = $products_per_page;
 
-    // PDO necesită ca valorile pentru LIMIT/OFFSET să fie integeri.
-    // Bind-ul se face corect dacă tipul e specificat sau dacă valoarea e deja integer.
-    // Pentru a fi expliciți, putem folosi PDO::PARAM_INT, dar în acest caz PHP ar trebui să le trateze corect.
-    // PDO tratează :offset și :limit_per_page ca placeholders, nu ca valori directe în query.
-    // Asigură-te că $offset și $products_per_page sunt integeri.
     foreach($final_bind_params as $key => &$val) { // Trecem prin referință pentru a putea modifica tipul
         if ($key === ':offset' || $key === ':limit_per_page') {
-            // Acest pas nu e strict necesar dacă variabilele sunt deja int, dar e o bună practică
-            // $stmt_products->bindValue($key, (int)$val, PDO::PARAM_INT);
-            // În cazul nostru, $stmt_products->execute($final_bind_params) ar trebui să funcționeze
-            // atâta timp cât valorile pentru offset și limit sunt integeri în array.
         }
     }
     // Executăm cu toți parametrii (căutare + paginare)
@@ -204,7 +195,7 @@ try {
                 if (!empty($search_term)) {
                     $query_params_for_pagination['search_term'] = $search_term;
                 }
-                // Adaugă și alți parametri de filtrare aici dacă îi implementezi
+              
 
                 $base_pagination_url = "products_list.php";
                 if (!empty($query_params_for_pagination)) {

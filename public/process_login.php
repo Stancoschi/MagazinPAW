@@ -29,9 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Login cu succes
                 $_SESSION['user_logged_in'] = true;
                 $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username']; // Sau $user['first_name'] dacă vrei să afișezi prenumele
+                $_SESSION['username'] = $user['username']; // Sau $user['first_name'] dacă vreau să afișez prenumele
                 
-                // Redirecționează la pagina principală sau la pagina de unde a venit (dacă implementezi asta)
+                // Redirecționează la pagina principală sau la pagina de unde a venit
                 header('Location: index.php'); // Sau products_list.php
                 exit;
             } else {

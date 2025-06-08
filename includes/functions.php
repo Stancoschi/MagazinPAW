@@ -1,7 +1,7 @@
 <?php
 
 
-// Funcție pentru redimensionarea imaginilor (necesită extensia GD)
+// Funcție pentru redimensionarea imaginilor
 function resizeImage($sourcePath, $destinationPath, $newWidth, $newHeight = null, $quality = 85) {
     list($width, $height, $type) = getimagesize($sourcePath);
 
@@ -48,13 +48,7 @@ function escape($html) {
 if (!defined('BASE_URL')) {
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
     $host = $_SERVER['HTTP_HOST'];
-    // Ajustează '/magazin_virtual' dacă:
-    // - Proiectul este într-un alt subfolder al DocumentRoot-ului.
-    // - DocumentRoot-ul Apache este setat direct la directorul proiectului (caz în care $project_subdir ar fi '').
     $project_subdir = ''; 
     define('BASE_URL', $protocol . $host . $project_subdir);
 }
-
-// Pentru debug, poți adăuga aici:
-// echo "DEBUG functions.php: BASE_URL a fost definit ca: " . BASE_URL . "<br>";
 ?>

@@ -1,5 +1,4 @@
 <?php
-// public/process_register.php
 session_start(); // Pornim sesiunea pentru mesaje flash și repopulare formular
 require_once __DIR__ . '/../includes/db.php';   // Pentru $pdo
 require_once __DIR__ . '/../includes/functions.php'; // Pentru escape()
@@ -68,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } else {
         // Nu sunt erori, putem crea utilizatorul
-        $password_hash = password_hash($password, PASSWORD_DEFAULT); // Hash-uiește parola!
+        $password_hash = password_hash($password, PASSWORD_DEFAULT); // Hash-uieșc parola!
 
         try {
             $stmt = $pdo->prepare("INSERT INTO users (username, email, password_hash) VALUES (:username, :email, :password_hash)");
