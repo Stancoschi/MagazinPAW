@@ -5,7 +5,7 @@ session_start();
 // Distruge toate variabilele de sesiune
 $_SESSION = array();
 
-// Dacă se dorește distrugerea completă a sesiunii, șterge și cookie-ul de sesiune.
+
 // Notă: Aceasta va distruge sesiunea, nu doar datele sesiunii!
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();

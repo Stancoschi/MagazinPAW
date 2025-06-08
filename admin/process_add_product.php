@@ -3,12 +3,8 @@
 require_once __DIR__ . '/../includes/header.php'; // Include db.php, functions.php, session_start()
 
 // Definește căile către directoarele de upload
-// Asigură-te că aceste directoare există și au permisiuni de scriere pentru serverul web (www-data)
-// De exemplu, din rădăcina proiectului:
-// mkdir -p uploads/products uploads/products_thumbnails
-// sudo chown -R www-data:www-data uploads
-// sudo chmod -R 775 uploads
-// Path-ul relativ la directorul scriptului curent (__DIR__)
+// Asigura că aceste directoare există și au permisiuni de scriere pentru serverul web (www-data)
+
 $originalUploadDir = __DIR__ . '/../uploads/products/';
 $thumbnailUploadDir = __DIR__ . '/../uploads/products_thumbnails/';
 $thumbnailWidth = 150; // Lățimea dorită pentru thumbnail-uri
@@ -46,8 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Creează thumbnail pentru imaginea principală
                 if (!resizeImage($mainPhotoPath, $mainThumbnailPath, $thumbnailWidth)) {
                      $errors[] = "Eroare la redimensionarea imaginii principale.";
-                     // Poți decide să ștergi fișierul original dacă thumbnail-ul eșuează
-                     // unlink($mainPhotoPath); $mainPhotoFilename = null;
+                    
                 }
             } else {
                 $errors[] = "Eroare la încărcarea imaginii principale.";
@@ -61,8 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($errors)) {
         $_SESSION['flash_message'] = implode("<br>", $errors);
         $_SESSION['flash_type'] = 'error';
-        // Poți salva și datele introduse în sesiune pentru a repopula formularul
-        // $_SESSION['form_data'] = $_POST;
+       
         header('Location: add_product.php');
         exit;
     }
@@ -106,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 ]);
                             } else {
                                  $_SESSION['flash_message'] = (isset($_SESSION['flash_message']) ? $_SESSION['flash_message']."<br>" : "") . "Eroare redimensionare imagine secundară: " . escape($origName);
-                                 // unlink($secondaryPhotoPath); // Option: delete original if thumbnail fails
+                                 
                             }
                         } else {
                             $_SESSION['flash_message'] = (isset($_SESSION['flash_message']) ? $_SESSION['flash_message']."<br>" : "") . "Eroare încărcare imagine secundară: " . escape($origName);
@@ -121,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdo->commit();
         $_SESSION['flash_message'] = 'Produsul a fost adăugat cu succes!';
         $_SESSION['flash_type'] = 'success';
-        header('Location: list_products_admin.php'); // Sau add_product.php dacă vrei să adaugi altul
+        header('Location: list_products_admin.php'); 
         exit;
 
     } catch (PDOException $e) {

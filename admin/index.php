@@ -5,8 +5,6 @@ ini_set('display_errors', 1);
 
 session_start(); // Pornim sesiunea aici, o singură dată pentru această pagină
 
-// echo "DEBUG index.php: Sesiune ID: " . session_id() . "<br>";
-// echo "DEBUG index.php: _SESSION la intrare: <pre>" . print_r($_SESSION, true) . "</pre>";
 
 // 1. Verifică dacă adminul este logat
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
@@ -60,7 +58,7 @@ try {
 
 ?>
 
-<div class="admin-dashboard-content" style="padding-top: 0px;"> <!-- Am scos padding-top de aici, e in .admin-container din header -->
+<div class="admin-dashboard-content" style="padding-top: 0px;"> 
     <h2>Panou de Control Administrator</h2>
     <p style="font-size: 1.1em; margin-bottom: 25px;">Bine ai venit, <strong><?php echo escape($_SESSION['admin_username'] ?? 'Admin'); ?></strong>!</p>
 

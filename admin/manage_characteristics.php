@@ -40,8 +40,7 @@ try {
                     <td><?php echo escape($char['id']); ?></td>
                     <td><?php echo escape($char['name']); ?></td>
                     <td>
-                        <!-- Aici poți adăuga link-uri pentru Editare / Ștergere tip caracteristică -->
-                        <!-- Atenție: ștergerea unui tip de caracteristică ar trebui să gestioneze și valorile asociate -->
+                       
                          <a href="process_manage_characteristics.php?action=delete&id=<?php echo $char['id']; ?>"
                            onclick="return confirm('Sigur doriți să ștergeți acest tip de caracteristică? Aceasta va șterge și toate valorile asociate la produse!');"
                            class="button delete">Șterge</a>

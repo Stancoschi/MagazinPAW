@@ -10,8 +10,8 @@ if (!isset($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
 }
 $product_id = (int)$_GET['id'];
 
-// Pre-verificare / afișare confirmare (dacă nu e direct prin JS confirm)
-// Poți crea o pagină de confirmare separată sau te bazezi pe confirmarea JS.
+// Pre-verificare / afișare confirmare
+
 
 try {
     // Preluare nume fișiere imagini pentru a le șterge de pe disc

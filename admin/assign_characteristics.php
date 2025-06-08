@@ -1,5 +1,4 @@
 <?php
-// La începutul fiecărui fișier din /admin/ (ex: admin/index.php, admin/list_products_admin.php etc.)
 session_start(); 
 
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
@@ -10,9 +9,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
 // Dacă ajunge aici, utilizatorul este logat. Putem continua cu includerea header-ului și restul paginii.
 // Notă: header.php din includes/ va porni și el session_start(), dar nu e o problemă dacă e apelat de două ori.
-// Alternativ, poți avea un header specific pentru admin care face această verificare.
-require_once __DIR__ . '/../includes/header_admin.php'; // Sau header.php dacă folosești același, DAR vezi nota de mai jos
-// ... restul codului paginii admin
+require_once __DIR__ . '/../includes/header_admin.php'; 
 ?>
 <?php
 require_once __DIR__ . '/../includes/header.php';
